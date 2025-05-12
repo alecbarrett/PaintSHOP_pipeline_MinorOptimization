@@ -2,6 +2,32 @@
     <a href="#readme"><img src="./docs/img/PaintSHOP-logo.png" width="200"></a>
 </div>
 
+# PaintSHOP Pipeline - Memory-Optimized Fork
+
+This is a memory-efficient fork of the [original PaintSHOP_pipeline](https://github.com/beliveau-lab/PaintSHOP_pipeline) that modifies the `parse_pairwise.py` script to use streaming processing instead of loading entire files into memory.
+
+## Key Changes
+
+- **Streaming Processing**: The modified `parse_pairwise.py` reads:
+  - File 1: 4 lines at a time (standard FASTQ format)
+  - File 2: 1 line at a time
+- **Memory Efficiency**: Processes and writes results in batches, significantly reducing memory usage for large files
+- **Same Output**: Produces identical results to the original implementation
+- **Additional Dependency**: Requires the `re` module (standard library)
+
+## Why Use This Fork?
+
+This fork is ideal if you're:
+- Processing large FASTQ files that exceed available memory
+- Running the pipeline on systems with limited RAM
+- Working with multiple samples in parallel
+
+## Installation
+
+Same as the original pipeline, with no additional external dependencies (uses Python's built-in `re` module).
+
+---
+
 # PaintSHOP Pipeline
 
 [![Snakemake](./docs/img/snakemake.svg)](https://snakemake.readthedocs.io)
